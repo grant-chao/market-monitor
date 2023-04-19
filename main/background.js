@@ -18,7 +18,7 @@ if (isProd) {
       width: 180,
       useContentSize: true,
       frame: false,   //要创建无边框窗口
-      // resizable: false, //禁止窗口大小缩放
+      resizable: !isProd, //禁止窗口大小缩放
       transparent: true,  //设置透明
       alwaysOnTop: true,  //窗口是否总是显示在其他窗口之前
       icon: nativeImage.createFromPath('resources/icon.ico'), // "string" || nativeImage.createFromPath('src/image/icons/256x256.ico')从位于 path 的文件创建新的 NativeImage 实例
@@ -37,7 +37,7 @@ if (isProd) {
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/`);
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
 })();
 

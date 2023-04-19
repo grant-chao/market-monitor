@@ -16,6 +16,12 @@ let isConnecting = false;
 // socket 实例
 let socket = null;
 
+const _reconnect = () => {
+    isConnect = false;
+    isConnecting = false;
+    setTimeout(_connect, RECONNECTION_INTERVAL);
+}
+
 // 建立链接
 const _connect = () => {
     if(isConnect || isConnecting) return;
@@ -40,11 +46,8 @@ const _connect = () => {
             });
         }
     };
-    socket.onerror = () => {
-        isConnect = false;
-        isConnecting = true;
-        setTimeout(_connect, RECONNECTION_INTERVAL);
-    }
+    socket.onclose = () => _reconnect();
+    socket.onerror = () => _reconnect();
 }
 
 const _pushSymbols = (symbols) => {

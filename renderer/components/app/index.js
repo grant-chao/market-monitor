@@ -6,16 +6,12 @@ import classNames from "classnames";
 
 function App() {
     const [data, setData] = useState({});
-    const onData = (data) => {
-        console.log(data);
-        setData(data);
-    };
 
     useEffect(() => {
-        on(onData);
+        on(setData);
         subscribe(['btcusdt']);
         return () => {
-            off(onData);
+            off(setData);
             unsubscribe(['btcusdt']);
         }
     }, []);
