@@ -1,0 +1,13 @@
+appId: org.zkit.mm
+productName: Market Monitor
+copyright: Copyright © 2023 Grant
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
+forceCodeSigning: false
