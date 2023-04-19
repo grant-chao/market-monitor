@@ -1,0 +1,36 @@
+.mainWindow {
+    -webkit-app-region: drag;
+    backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    width: 180px;
+    height: 42px;
+    user-select: none;
+    cursor: default;
+    .item {
+        width: 100%;
+        padding-right: 20px;
+        flex: 1;
+        color: rgba(29, 33, 41, 1);
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        .value {
+            font-size: 22px;
+            margin: 5px 0;
+            width: 110px;
+        }
+        .ratio {
+            font-size: 12px;
+            opacity: 0.6;
+        }
+        &.up {
+            color: rgba(0, 255, 0, 1);
+        }
+        &.down {
+            color: rgba(255, 255, 0, 1);
+        }
+    }
+}
+

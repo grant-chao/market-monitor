@@ -25,6 +25,6 @@ yarn-error.log*
 /package
 
 *.log
-.next
-app
-dist
+/renderer/.next
+/app
+/dist

@@ -3,16 +3,12 @@ import {pullAll} from 'lodash';
 
 // 行情Socket
 const KLINE_URL = "wss://stream.binance.com:9443/ws/@miniTicker";
-/// 最大重新链接次数
-const RECONNECTION_MAX = 10;
 /// 重试间隔
 const RECONNECTION_INTERVAL = 5000;
 const DATA_EVENT_KEY = 'market.websocket.data';
 
 // 已订阅币对
 const subscribeSymbols = [];
-/// 重新链接次数
-let reconnectionTimes = 0;
 // 已连接
 let isConnect = false;
 // 连接中
@@ -46,8 +42,6 @@ const _connect = () => {
     };
     socket.onerror = () => {
         isConnect = false;
-        if(reconnectionTimes > RECONNECTION_MAX) return;
-        reconnectionTimes ++;
         isConnecting = true;
         setTimeout(_connect, RECONNECTION_INTERVAL);
     }
